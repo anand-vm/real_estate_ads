@@ -39,9 +39,11 @@ class PropertyOffer(models.Model):
     create_date = fields.Date(string="Created Date", default=fields.Date.context_today)
 
     # SQL constraints will work only if the field is stored and act before python constraints.
+    ''' 
     _sql_constraints = [
         ('validity', 'CHECK(validity > 0)', 'Validity must be strictly positive.'),
     ]
+    '''
 
     @api.depends("create_date", "validity")
     # @api.depends_context('uid')

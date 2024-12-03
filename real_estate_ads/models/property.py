@@ -54,7 +54,7 @@ class Property(models.Model):
         for record in self:
             record.offer_count = len(record.offer_ids)
 
-    offer_count = fields.Integer(string="Offers", compute="_compute_offer_count")
+    offer_count = fields.Integer(string="Offer count", compute="_compute_offer_count")
 
 
     def action_property_view_offer(self):

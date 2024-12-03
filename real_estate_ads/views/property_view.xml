@@ -11,6 +11,28 @@
 
         </record>
 
+        <record id="view_property_search_view" model="ir.ui.view">
+            <field name="name">estate.property.search</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name" />
+                    <field name="state" />
+                    <filter string="State: New" name="state_new" domain="[('state', '=', 'new')]" />
+                    <filter string="State: Sold" name="state_sold" domain="[('state', '=', 'sold')]" />
+
+                    <group expand="0" string="Group by">
+                    <filter string="status" name="group_by_state" context="{'group_by': 'state'}" />
+                    </group>
+
+                    <searchpanel>
+                    <field name="state" icon="fa-filter" groupby="group_by_state"  limit="0" />
+                    </searchpanel>
+                    
+                </search>
+            </field>
+        </record>
+
 
         <record id="view_property_tree_view" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
@@ -46,11 +68,6 @@
                     <sheet>
 
                         <div class="oe_button_box" name="button_box">
-                            <!-- <button class="oe_stat_button"
-                            name="%(real_estate_ads.action_property_view_offers)d" type="action"
-                            icon="fa-folder-open"> 
-                        <field name="offer_count" string="Offers" widget="statinfo" />
-                      </button> -->
 
                             <button class="oe_stat_button" name="action_property_view_offer"
                                 type="object" icon="fa-folder-open">
@@ -62,7 +79,8 @@
 
                         <group>
                             <field name="name" widget="char_emojis" placeholder="Property Name" />
-                            <field name="tag_ids" widget="many2many_tags" options="{'color_field':'color'}" />
+                            <field name="tag_ids" widget="many2many_tags"
+                                options="{'color_field':'color'}" />
 
                             <group>
                                 <field name="type_id" />
@@ -86,7 +104,8 @@
                                         <field name="garage" widget="boolean_toggle" />
                                         <field name="garden" />
                                         <field name="garden_area" />
-                                        <field name="garden_orientation" invisible="not garden" widget="selection_badge" />
+                                        <field name="garden_orientation" invisible="not garden"
+                                            widget="selection_badge" />
                                         <field name="total_area" />
                                     </group>
                                 </page>
