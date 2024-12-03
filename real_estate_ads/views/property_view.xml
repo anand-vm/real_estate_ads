@@ -35,6 +35,22 @@
         </record>
 
 
+        <record id="view_property_pivot_view" model="ir.ui.view">
+            <field name="name">estate.property.pivot</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="name" type="row" />
+                    <field name="best_offer" type="measure" />
+                    <field name="selling_price" type="measure" />
+                    <field name="facades" type="measure" />
+                    <field name="bedrooms" type="measure" />
+                    <field name="state" type="col" />
+                </pivot>
+            </field>
+        </record>
+
+
         <record id="view_property_tree_view" model="ir.ui.view">
             <field name="name">estate.property.tree</field>
             <field name="model">estate.property</field>
@@ -161,13 +177,26 @@
             </field>
         </record>
 
+        <record id="estate_property_calendar_view" model="ir.ui.view">
+            <field name="name">estate.property.calendar</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <calendar date_start="date_availability" string="Properties" mode="month">
+                    <field name="name" />
+                    <field name="postcode" />
+                    <field name="date_availability" />
+                </calendar>
+            </field>
+        </record>
+
 
         <record id="view_property_kanban_view" model="ir.ui.view">
-        
+
             <field name="name">estate.property.kanban</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <kanban default_group_by="state" on_create="quick_create" quick_create_view="real_estate_ads.estate_property_quick_create_form">
+                <kanban default_group_by="state" on_create="quick_create"
+                    quick_create_view="real_estate_ads.estate_property_quick_create_form">
                     <!-- Define fields used in the kanban view -->
                     <field name="name" />
                     <field name="buyer_id" />
@@ -210,7 +239,7 @@
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
-            <field name="view_mode">tree,kanban,form</field>
+            <field name="view_mode">tree,kanban,calendar,pivot,form</field>
             <field name="view_id" ref="view_property_tree_view" />
 
             <field name="help" type="html">
