@@ -22,13 +22,14 @@
                     <filter string="State: Sold" name="state_sold" domain="[('state', '=', 'sold')]" />
 
                     <group expand="0" string="Group by">
-                    <filter string="status" name="group_by_state" context="{'group_by': 'state'}" />
+                        <filter string="status" name="group_by_state"
+                            context="{'group_by': 'state'}" />
                     </group>
 
                     <searchpanel>
-                    <field name="state" icon="fa-filter" groupby="group_by_state"  limit="0" />
+                        <field name="state" icon="fa-filter" groupby="group_by_state" limit="0" />
                     </searchpanel>
-                    
+
                 </search>
             </field>
         </record>
@@ -147,10 +148,55 @@
         </record>
 
 
+        <record id="view_property_kanban_view" model="ir.ui.view">
+            <field name="name">estate.property.kanban</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <!-- Define fields used in the kanban view -->
+                    <field name="name" />
+                    <field name="buyer_id" />
+                    <field name="postcode" />
+                    <field name="state" />
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click o_kanban_record">
+                                <div class="oe_kanban_content">
+                                    <!-- Display property name -->
+                                    <strong t-esc="record.name.value" class="o_kanban_record_title" />
+
+                                    
+
+                                    <!-- Display postcode -->
+                                    <div>
+                                        <span>Postcode:</span>
+                                        <span t-esc="record.postcode.value" />
+                                    </div>
+
+                                    <!-- Display buyer information -->
+                                    <div>
+                                        <span>Buyer:</span>
+                                        <span t-esc="record.buyer_id.value" />
+                                    </div>
+
+                                    <!-- Display state -->
+                                    <div>
+                                        <span>Status:</span>
+                                        <span t-esc="record.state.value" />
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
         <record id="action_property" model="ir.actions.act_window">
             <field name="name">Property</field>
             <field name="res_model">estate.property</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,kanban,form</field>
             <field name="view_id" ref="view_property_tree_view" />
 
             <field name="help" type="html">
