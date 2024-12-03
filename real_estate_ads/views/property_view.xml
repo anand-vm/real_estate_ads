@@ -148,11 +148,26 @@
         </record>
 
 
+        <record id="estate_property_quick_create_form" model="ir.ui.view">
+            <field name="name">estate.property.quick.create.form</field>
+            <field name="model">estate.property</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <field name="name" placeholder="Enter property name" />
+                        <field name="postcode" placeholder="Enter postcode" />
+                    </group>
+                </form>
+            </field>
+        </record>
+
+
         <record id="view_property_kanban_view" model="ir.ui.view">
+        
             <field name="name">estate.property.kanban</field>
             <field name="model">estate.property</field>
             <field name="arch" type="xml">
-                <kanban>
+                <kanban default_group_by="state" on_create="quick_create" quick_create_view="real_estate_ads.estate_property_quick_create_form">
                     <!-- Define fields used in the kanban view -->
                     <field name="name" />
                     <field name="buyer_id" />
@@ -165,7 +180,6 @@
                                     <!-- Display property name -->
                                     <strong t-esc="record.name.value" class="o_kanban_record_title" />
 
-                                    
 
                                     <!-- Display postcode -->
                                     <div>
