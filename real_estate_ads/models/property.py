@@ -15,8 +15,8 @@ class Property(models.Model):
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(string="Available From")
     expected_price = fields.Float(string="Expected Price")
-    best_offer = fields.Float(string="Best Offer")
-    selling_price = fields.Float(string="Selling Price",store=True)
+    best_offer = fields.Float(string="Best Offer", compute="_compute_best_price") # Accept by self._compute_best_offer or Keep the Methods above the code in an organized way. (Not in between model fields)
+    selling_price = fields.Float(string="Selling Price", readonly=True)
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area (sqm)")
     facades = fields.Integer(string="Facades")
@@ -67,6 +67,14 @@ class Property(models.Model):
             "name": f"{self.name} - Offers",
             "context": {"default_property_id": self.id},
         }
+    
+    @api.depends("offer_ids")
+    def _compute_best_price(self):
+        for record in self:
+            if record.offer_ids:
+                record.best_offer = max(record.offer_ids.mapped("price"))
+            else:
+                record.best_offer = 0
 
 
 
