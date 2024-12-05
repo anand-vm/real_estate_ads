@@ -95,9 +95,9 @@
                                 <field name="offer_count" string="Offers" widget="statinfo" />
                             </button>
 
-                            <button class="oe_stat_button" name="action_client_action"
+                            <button class="oe_stat_button" name="action_url_action"
                                 type="object" icon="fa-handshake-o">
-                                <field name="offer_count" string="Testing Client" widget="statinfo" />
+                                <field name="offer_count" string="Test URL Action" widget="statinfo" />
                             </button>
 
                         </div>
@@ -277,6 +277,16 @@
             </field>
         </record>
 
+        <record id="ir_cron_extended_offer_deadline" model="ir.cron"> 
+        <field name="name">Offers: Extend Deadline Everyday </field>
+        <field name="model_id" ref="real_estate_ads.model_estate_property_offer"/>
+        <field name="state">code</field>
+        <field name="code">model._extend_offer_deadline()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+         </record>
     </data>
 
 </odoo>

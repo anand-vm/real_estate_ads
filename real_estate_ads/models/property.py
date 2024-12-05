@@ -85,6 +85,13 @@ class Property(models.Model):
             "params": {"property_id": self.id},
         }
 
+    def action_url_action(self):
+        return {
+            'type' : 'ir.actions.act_url',
+            'url' : "https://www.google.com",
+            'domain': [('property_id', '=', self.id)],
+            'target': 'self',   # new for open in new tab
+        }
 
 class PropertyType(models.Model):
     _name = "estate.property.type"
