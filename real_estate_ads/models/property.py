@@ -93,6 +93,11 @@ class Property(models.Model):
             'target': 'self',   # new for open in new tab
         }
 
+
+    def _get_report_base_filename(self):
+        self.ensure_one()
+        return "Estate Property - %s" % (self.name)
+
 class PropertyType(models.Model):
     _name = "estate.property.type"
     _description = "Real Estate Property Types"

@@ -23,5 +23,7 @@
         <field name="name">Manager: Manage all properties</field>
         <field name="category_id" ref="real_estate_ads.module_category_real_estate"/>
         <field name="implied_ids" eval="[(4, ref('real_estate_ads.group_property_admin'))]"/>
-    </record>
+    </record> 
+
+
 </odoo>

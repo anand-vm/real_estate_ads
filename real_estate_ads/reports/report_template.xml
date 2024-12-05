@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <template id="report_estate_property_document">
+            <t t-call="web.external_layout">
+                <div class="mt-5">
+                    <div class="page">
+                        <h2>Property Report</h2>
+
+                        <div id='information' class="row mt-4 mb-4">
+                            <div class="col-auto col-3">
+                                <strong> Docs Type </strong>
+                                <p classass="m-0" t-field="doc.type_id" />
+
+                            </div>
+
+                            <div class="col-auto col-3">
+                                <strong> Post Code </strong>
+                                <p classass="m-0" t-field="doc.postcode" />
+
+                            </div>
+
+                            <div class="col-auto col-3">
+                                <strong> Expected Date </strong>
+                                <p classass="m-0" t-field="doc.expected_price" />
+
+                            </div>
+
+                            <div class="col-auto col-3">
+                                <strong> Available Date </strong>
+                                <p classass="m-0" t-field="doc.date_availability" />
+
+                            </div>
+
+                            <div class="col-auto col-3">
+                                <strong> Selling price </strong>
+                                <p classass="m-0" t-field="doc.selling_price" />
+
+                            </div>
+
+                        </div>
+
+                        <table class="table table-sm table-striped table-borderless">
+                            <thead>
+                                <tr>
+                                    <th class="text-start">Customer </th>
+                                    <th class="text-start"> Price </th>
+                                    <th class="text-start">Validity </th>
+                                    <th class="text-start">Deadline </th>
+                                    <th class="text-end">Status </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="doc.offer_ids" t-as="offer">
+                                    <tr>
+                                        <td class="text-start">
+                                            <span t-field="offer.partner_id" />
+                                        </td>
+                                        <td class="text-start">
+                                            <span t-field="offer.price" />
+                                        </td>
+                                        <td class="text-start">
+                                            <span t-field="offer.validity" />
+                                        </td>
+                                        <td class="text-start">
+                                            <span t-field="offer.date_deadline" />
+                                        </td>
+                                        <td class="text-end">
+                                            <span t-field="offer.status" />
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_estate_property" name="Property Report">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="real_estate_ads.report_estate_property_document" />
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -29,6 +29,8 @@
         # Data files
         # "data/property_type.xml",
         "data/estate.property.type.csv",
+        "reports/report_template.xml",
+        "reports/property_report.xml",
     ],
     "demo": [
         "demo/property_tag.xml",
