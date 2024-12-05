@@ -130,6 +130,13 @@ class PropertyOffer(models.Model):
                         "There is already an accepted offer for this property. "
                         "You cannot accept multiple offers for the same property."
                     )
+                
+    def extend_offer_deadline(self):
+        active_ids = self._context.get('active_ids', [])
+        if active_ids:
+            offer_ids = self.env['estate.property.offer'].browse(active_ids)
+            for offer in offer_ids:
+                offer.validity = 10
     
 # Different types of Models in Odoo
 # 1. Standard Model, 2. Abstract Model, 3. Transient Model, 4. Proxy Model, 
