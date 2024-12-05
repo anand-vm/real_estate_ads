@@ -6,6 +6,16 @@
     "description": "Real Estate Module to List Properties",
     "category": "Sales",
     "depends": ["base"],
+
+    "assets": {
+    "web.assets_backend": [
+        "real_estate_ads/static/src/js/my_custom_tag.js",
+        "real_estate_ads/static/src/xml/my_custom_tag.xml",
+            ],
+        },
+
+
+
     "data": [
         "security/ir.model.access.csv",
         "security/res_groups.xml",
@@ -23,6 +33,7 @@
     "demo": [
         "demo/property_tag.xml",
     ],
+
     "installable": True,
     "application": True,
     "license": "LGPL-3"

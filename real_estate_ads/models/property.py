@@ -77,6 +77,13 @@ class Property(models.Model):
                 record.best_offer = 0
 
 
+    def action_client_action(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.client",
+            "tag": "custom_client_action",
+            "params": {"property_id": self.id},
+        }
 
 
 class PropertyType(models.Model):

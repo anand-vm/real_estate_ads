@@ -1,35 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <!-- Root menu -->
+    <menuitem id="menu_root_property_ads" name="Property Ads" sequence="10" 
+        web_icon="real_estate_ads,static/description/icon.png"/>
 
- <menuitem id="menu_root_property_ads" name="Property Ads" sequence="10" 
- web_icon="real_estate_ads, static/description/icon.png">
+    <!-- Submenu: Ads -->
+    <menuitem id="menu_property_ads" name="Ads" parent="menu_root_property_ads">
+        <menuitem id="menu_property" name="Property" action="real_estate_ads.action_property"/>
+    </menuitem>
 
-<menuitem id="menu_property_ads" name="Ads"> 
-    <menuitem id="menu_property" name="Property"  action="real_estate_ads.action_property" />
-</menuitem>
+    <!-- Submenu: Settings -->
+    <menuitem id="menu_property_ads_settings" name="Settings" parent="menu_root_property_ads">
+        <menuitem id="menu_property_type" name="Property Type" action="real_estate_ads.action_property_type"/>
+        <menuitem id="menu_property_tag" name="Property Tag" action="real_estate_ads.action_property_tag"/>
+        <menuitem id="menu_property_offer" name="Property Offer" action="real_estate_ads.action_property_offer"/>
+        <menuitem id="menu_test_client_action" name="Test Action" action="real_estate_ads.custom_client_action"/>
 
-<menuitem id="menu_property_ads_settings" name="Settings">
-    <menuitem id="menu_property_type" name="Property Type" action="real_estate_ads.action_property_type" />
-    <menuitem id="menu_property_tag" name="Property Tag" action="real_estate_ads.action_property_tag" />
-    <menuitem id="menu_property_offer" name="Property Offer" action="real_estate_ads.action_property_offer" />
-</menuitem>
-
-
-
-<!-- <menuitem id="menu_property_ads_settings" name="Settings"> 
-    <menuitem id="menu_property_type" name="Property Type"  action="real_estate_ads.action_property_type" />
-</menuitem>
-
-
-<menuitem id="menu_property_ads_settings" name="Settings"> 
-    <menuitem id="menu_property_tag" name="Property Tag"  action="real_estate_ads.action_property_tag" />
-</menuitem>
-
-<menuitem id="menu_property_ads_settings" name="Settings"> 
-    <menuitem id="menu_property_offer" name="Property Offer"  action="real_estate_ads.action_property_offer" />
-</menuitem> -->
-
-
- </menuitem>
-
+    </menuitem>
 </odoo>
