@@ -186,7 +186,6 @@
 
         </record>
 
-
         <record id="estate_property_quick_create_form" model="ir.ui.view">
             <field name="name">estate.property.quick.create.form</field>
             <field name="model">estate.property</field>
