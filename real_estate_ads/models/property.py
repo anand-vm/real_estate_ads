@@ -2,7 +2,7 @@ from odoo import fields, models,api
 
 class Property(models.Model):
     _name = "estate.property"
-    _inherit = ["mail.thread", "mail.activity.mixin"] 
+    _inherit = ["mail.thread", "mail.activity.mixin", 'utm.mixin'] 
     _description = "Real Estate Property"
 
 
