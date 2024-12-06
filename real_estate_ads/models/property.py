@@ -2,7 +2,9 @@ from odoo import fields, models,api
 
 class Property(models.Model):
     _name = "estate.property"
+    _inherit = ["mail.thread", "mail.activity.mixin"] 
     _description = "Real Estate Property"
+
 
     name = fields.Char(string="Name", required=True)
     state = fields.Selection(
@@ -14,9 +16,9 @@ class Property(models.Model):
     description = fields.Text(string="Description")
     postcode = fields.Char(string="Postcode")
     date_availability = fields.Date(string="Available From")
-    expected_price = fields.Float(string="Expected Price")
+    expected_price = fields.Float(string="Expected Price", tracking=True)
     best_offer = fields.Float(string="Best Offer", compute="_compute_best_price") # Accept by self._compute_best_offer or Keep the Methods above the code in an organized way. (Not in between model fields)
-    selling_price = fields.Float(string="Selling Price", readonly=True)
+    selling_price = fields.Float(string="Selling Price", readonly=True, tracking=True)
     bedrooms = fields.Integer(string="Bedrooms")
     living_area = fields.Integer(string="Living Area (sqm)")
     facades = fields.Integer(string="Facades")

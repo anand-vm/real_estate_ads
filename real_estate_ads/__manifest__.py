@@ -5,7 +5,7 @@
     "author": "Anand",
     "description": "Real Estate Module to List Properties",
     "category": "Sales",
-    "depends": ["base"],
+    "depends": ["base","mail"],
 
     "assets": {
     "web.assets_backend": [
