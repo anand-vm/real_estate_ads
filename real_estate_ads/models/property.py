@@ -99,6 +99,15 @@ class Property(models.Model):
     def _get_report_base_filename(self):
         self.ensure_one()
         return "Estate Property - %s" % (self.name)
+    
+
+    def action_send_email(self):
+        mail_template = self.env.ref('real_estate_ads.offer_mail_template')
+
+
+    def _get_emails(self):
+        return ','.join(self.offer_ids.mapped("partner_id.email"))
+
 
 class PropertyType(models.Model):
     _name = "estate.property.type"

@@ -77,8 +77,14 @@
                     <header>
                         <button name="action_sold" string="Sold" type="object"
                             class="btn btn-primary" />
+
                         <button name="action_cancelled" string="Cancelled" type="object"
                             class="btn btn-danger" />
+
+
+                        <button name="action_send_email" string="Email" type="object"
+                            class="btn btn-info" />
+
                         <field name="state" widget="statusbar"
                             statusbar_visible="new,accepted,sold,cancelled" />
                     </header>

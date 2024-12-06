@@ -28,6 +28,8 @@
         # Data files
         # "data/property_type.xml",
         "data/estate.property.type.csv",
+         "data/mail_template.xml",
+
         "reports/report_template.xml",
         "reports/property_report.xml",
     ],
