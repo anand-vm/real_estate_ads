@@ -36,6 +36,7 @@ class PropertyOffer(models.Model):
     property_id = fields.Many2one("estate.property", string="Property")
     validity = fields.Integer(string="Validity (days)", default=7)
     date_deadline = fields.Date(string="Deadline", compute='_compute_date_deadline', inverse='_inverse_date_deadline', store=True)
+    currency_id = fields.Many2one("res.currency", string="Currency", default=lambda self: self.env.user.company_id.currency_id)
 
 
     create_date = fields.Date(string="Created Date", default=fields.Date.context_today)

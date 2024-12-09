@@ -61,10 +61,11 @@
                     <field name="type_id" />
                     <field name="postcode" />
                     <field name="date_availability" />
-                    <field name="expected_price" />
-                    <field name="best_offer" />
-                    <field name="selling_price" />
+                    <field name="expected_price" widget="monetary" />
+                    <field name="best_offer" widget="monetary"/>
+                    <field name="selling_price" widget="monetary"/>
                     <field name="state" widget="badge" />
+                       <field name="currency_id" invisible="1" />
                 </tree>
             </field>
         </record>
@@ -119,9 +120,10 @@
                             </group>
 
                             <group>
-                                <field name="expected_price" />
+                                <field name="expected_price" widget="monetary" />
                                 <field name="best_offer" />
                                 <field name="selling_price" />
+                                <field name="currency_id"  invisible="1" />
                             </group>
 
                             <notebook>
@@ -145,7 +147,8 @@
                                         <tree editable="bottom"
                                             decoration-success="status == 'accepted'"
                                             decoration-danger="status == 'refused'">
-                                            <field name="price" />
+                                            <field name="price" widget="monetary" />
+                                            <field name="currency_id" invisible="1" />
                                             <field name="status" />
                                             <field name="create_date" />
                                             <field name="partner_id" />

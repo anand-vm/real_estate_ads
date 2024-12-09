@@ -8,7 +8,8 @@
     "depends": ["base","real_estate_ads"],
 
     "data": [
-    ],
+        "views/res_users.xml",
+        ],
     "installable": True,
     "application": True,
     "license": "LGPL-3"
