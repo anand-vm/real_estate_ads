@@ -5,7 +5,7 @@
     "author": "Anand",
     "description": "Real Estate Module to List Properties",
     "category": "Sales",
-    "depends": ["base","mail"],
+    "depends": ["base","mail", "website"],
 
     "assets": {
     "web.assets_backend": [
@@ -24,6 +24,7 @@
         "views/property_offer_view.xml",
         "views/property_view.xml",
         "views/menu_items.xml",
+        "views/property_web_template.xml",
 
         # Data files
         # "data/property_type.xml",
